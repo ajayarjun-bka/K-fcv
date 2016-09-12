@@ -1,0 +1,21 @@
+In this assignment you will write a program with the following basic functionality that is required for implementing a ML algorithm:
+
+ReadDataset: Reads a dataset in ".csv" format. The first line of the file contains the attribute names, the last attribute corresponds to the "class" 
+attribute. Lines 2 up to the end of the file are the data samples. See the attached "ecoli.csv" file.
+A data structure to store the names of the attributes and class attribute
+A data structure to store the 1 to n examples, X
+A data structure to store the 1 to n class of the examples, f(X)
+A process to normalize the data with values between 0 and 1. For this you need to know the maximum and minimum values of each of the attributes and 
+then re-compute the value of the attributes as: newValue = (value - minValue) / (maxValue - minValue)
+kFCV: A k fold cross validation process. This process will divide the data in "k" partitions (k is an input parameter, we usually use k=10 when 
+we have enough data), each of them of size 1/k. This process RANDOMLY chooses the samples to be added to each partition with no repetition. After that,
+kFCV will be able to return any of the k sub-datasets that we can construct by having 1 of the k partitions for testing and the other "k-1" partitions 
+for training.
+You will use the provided dataset "ecoli.csv" to test your code. This dataset was obtained from the UCI Machine Learning Repository. 
+Some changes were made to this file (i.e. the first attribute was removed) but you can find information about 
+this dataset at: https://archive.ics.uci.edu/ml/datasets/Ecoli
+
+Important Notes:
+
+Comment your code!
+Your code can be done in Java, C++, Python, or R but you need to make sure that the code compiles and runs in Omega
