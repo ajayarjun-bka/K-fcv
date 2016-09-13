@@ -1,5 +1,6 @@
 import math
 import random
+
 import pandas as pd
 
 '''##################################       Loading Data      ########################################'''
@@ -78,17 +79,17 @@ def partition():
     print sorted(part_list)
     parts = []
     for item in part_list:
-        tempdf = attributes[attributes['part'] == int(item)]
-        parts.append(tempdf)
+        temp_df = attributes[attributes['part'] == int(item)]
+        parts.append(temp_df)
     print parts
 
 
-def returnpartition():
-    input = raw_input("Enter the partitions to fetch")
-    tempdf= attributes[attributes['part'] == int(input)]
-    print tempdf
+def return_partition():
+    no_of_partitions = raw_input("Enter the partitions to fetch")
+    temp_df = attributes[attributes['part'] == int(no_of_partitions)]
+    print temp_df
 
 
 normalization()
 partition()
-#returnpartition()
+# return_partition()
