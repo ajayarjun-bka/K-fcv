@@ -1,6 +1,5 @@
 import math
 import random
-
 import pandas as pd
 
 '''##################################       Loading Data      ########################################'''
@@ -77,6 +76,19 @@ def partition():
     part_list = merged_data.part.unique()
     # match_results.stadium.unique()
     print sorted(part_list)
+    parts = []
+    for item in part_list:
+        tempdf = attributes[attributes['part'] == int(item)]
+        parts.append(tempdf)
+    print parts
+
+
+def returnpartition():
+    input = raw_input("Enter the partitions to fetch")
+    tempdf= attributes[attributes['part'] == int(input)]
+    print tempdf
+
 
 normalization()
 partition()
+#returnpartition()
