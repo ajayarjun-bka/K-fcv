@@ -1,6 +1,5 @@
 import math
 import random
-
 import pandas as pd
 
 '''##################################       Loading Data      ########################################'''
@@ -25,18 +24,18 @@ def normalization():
         for index, row in attributes.iterrows():
             # print "row val ",row[i]
             if min_attribute_val < 0 or max_attribute_val > 1:
-            # if row[i] < 0 or row[i] > 1:
-            # print "inside if loop"
-            # print "row val before normalization ", row[i]
+                # if row[i] < 0 or row[i] > 1:
+                # print "inside if loop"
+                # print "row val before normalization ", row[i]
                 normalized_value = (row[i] - min_attribute_val) / (max_attribute_val - min_attribute_val)
-            # print "normalized value is ",normalized_value
+                # print "normalized value is ",normalized_value
                 row[i] = normalized_value
-            # print "row val after normalization ", row[i]
-            # print attributes
-            # print attribute_name_list
-            # getch = raw_input("getch")
+                # print "row val after normalization ", row[i]
+                # print attributes
+                # print attribute_name_list
+                # getch = raw_input("getch")
     print attributes
-    #attributes.to_csv("norm.csv")
+    # attributes.to_csv("norm.csv")
 
 
 '''##################################     Patitioning Data   ########################################'''
