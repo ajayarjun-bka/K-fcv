@@ -24,17 +24,19 @@ def normalization():
         print "min is : ", min_attribute_val
         for index, row in attributes.iterrows():
             # print "row val ",row[i]
-            if row[i] < 0 or row[i] > 1:
-                # print "inside if loop"
-                # print "row val before normalization ", row[i]
+            if min_attribute_val < 0 or max_attribute_val > 1:
+            # if row[i] < 0 or row[i] > 1:
+            # print "inside if loop"
+            # print "row val before normalization ", row[i]
                 normalized_value = (row[i] - min_attribute_val) / (max_attribute_val - min_attribute_val)
-                # print "normalized value is ",normalized_value
+            # print "normalized value is ",normalized_value
                 row[i] = normalized_value
-                # print "row val after normalization ", row[i]
-                # print attributes
-                # print attribute_name_list
-                # getch = raw_input("getch")
+            # print "row val after normalization ", row[i]
+            # print attributes
+            # print attribute_name_list
+            # getch = raw_input("getch")
     print attributes
+    #attributes.to_csv("norm.csv")
 
 
 '''##################################     Patitioning Data   ########################################'''
@@ -69,27 +71,30 @@ def partition():
                 # print attributes.iloc[num, 7]
                 # getch = raw_input("getch")
             count += 1
-    print attributes
-    print class_val
-    print class_val.groupby('part1').count()
+    # print attributes
+    # print class_val
+    # print class_val.groupby('part1').count()
     merged_data = pd.concat([attributes, class_val], axis=1)
+    merged_data.drop('part1', axis=1, inplace=True)
     print merged_data
     part_list = merged_data.part.unique()
     # match_results.stadium.unique()
     print sorted(part_list)
     parts = []
     for item in part_list:
-        temp_df = attributes[attributes['part'] == int(item)]
+        temp_df = merged_data[merged_data['part'] == int(item)]
         parts.append(temp_df)
     print parts
 
 
 def return_partition():
+    merged_data = pd.concat([attributes, class_val], axis=1)
+    merged_data.drop('part1', axis=1, inplace=True)
     no_of_partitions = raw_input("Enter the partitions to fetch")
-    temp_df = attributes[attributes['part'] == int(no_of_partitions)]
+    temp_df = merged_data[merged_data['part'] == int(no_of_partitions)]
     print temp_df
 
 
 normalization()
 partition()
-# return_partition()
+return_partition()
