@@ -5,12 +5,12 @@ import pandas as pd
 
 ##################################       Loading Data      ########################################
 attributes = pd.read_csv('ecoli.csv', usecols=[0, 1, 2, 3, 4, 5, 6])
-# print attributes
 attribute_name_list = list(attributes.columns.values)
-# print attribute_name_list
 class_val = pd.read_csv('ecoli.csv', usecols=[7])
-# print class_val
 class_name_list = list(class_val.columns.values)
+total_list =  attribute_name_list + class_name_list
+print total_list
+
 # print class_name_list
 
 ##################################      Normalizing Data       ########################################
@@ -61,6 +61,8 @@ def partition():
             count += 1
     merged_data = pd.concat([attributes, class_val], axis=1)
     merged_data.drop('part1', axis=1, inplace=True)
+    print merged_data
+    y =raw_input("merge")
     part_list = merged_data.part.unique()
     parts = []
     part_list = sorted(part_list)
@@ -80,10 +82,11 @@ def partition():
         test_data.append(item)
         print "traiing data\n"
         for j in final_data:
-            if not(int(j.part.unique()) == chosen_part):
+            if not (int(j.part.unique()) == chosen_part):
                 print j
-        print "TEST DATA \n"+"#"*100
+        print "TEST DATA \n" + "#" * 100
         print test_data
+
 
 def return_partition():
     merged_data = pd.concat([attributes, class_val], axis=1)
@@ -92,8 +95,8 @@ def return_partition():
     temp_df = merged_data[merged_data['part'] == int(no_of_partitions)]
     print temp_df
 
+
 if __name__ == '__main__':
     normalization()
     partition()
     return_partition()
-
