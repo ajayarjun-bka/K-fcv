@@ -11,8 +11,6 @@ attribute_name_list = list(attributes.columns.values)
 class_val = pd.read_csv('ecoli.csv', usecols=[7])
 # print class_val
 class_name_list = list(class_val.columns.values)
-
-
 # print class_name_list
 
 ##################################      Normalizing Data       ########################################
@@ -96,24 +94,8 @@ def return_partition():
     temp_df = merged_data[merged_data['part'] == int(no_of_partitions)]
     print temp_df
 
-
-# def train(parts):
-#     print "inside train"
-#     final_data = parts
-#     print final_data
-#     for i in final_data:
-#         print "inside for loop\n"
-#         parts = final_data
-#         test_data = parts[i]
-#         parts.remove(i)
-#         # print "training with\n"
-#         # print parts+"\n\n"
-#         print "testing with"+"\n\n"
-#         print test_data+"\n\n"
-#     print "done"
-
-
-normalization()
-partition()
-return_partition()
+if __name__ == '__main__':
+    normalization()
+    partition()
+    return_partition()
 
