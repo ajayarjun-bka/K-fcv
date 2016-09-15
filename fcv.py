@@ -8,10 +8,9 @@ attributes = pd.read_csv('ecoli.csv', usecols=[0, 1, 2, 3, 4, 5, 6])
 attribute_name_list = list(attributes.columns.values)
 class_val = pd.read_csv('ecoli.csv', usecols=[7])
 class_name_list = list(class_val.columns.values)
-total_list =  attribute_name_list + class_name_list
+total_list = attribute_name_list + class_name_list
 print total_list
 
-# print class_name_list
 
 ##################################      Normalizing Data       ########################################
 
@@ -30,7 +29,6 @@ def normalization():
                 normalized_value = round((row[i] - min_attribute_val) / (max_attribute_val - min_attribute_val), 3)
                 row[i] = normalized_value
         print attributes
-        # attributes.to_csv("norm.csv")
     else:
         print "Proceeeding without Normalization"
 
@@ -62,7 +60,7 @@ def partition():
     merged_data = pd.concat([attributes, class_val], axis=1)
     merged_data.drop('part1', axis=1, inplace=True)
     print merged_data
-    y =raw_input("merge")
+    y = raw_input("merge")
     part_list = merged_data.part.unique()
     parts = []
     part_list = sorted(part_list)
