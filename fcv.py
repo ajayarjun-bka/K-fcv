@@ -1,5 +1,6 @@
 import math
 import random
+
 import pandas as pd
 
 '''##################################       Loading Data      ########################################'''
@@ -12,6 +13,7 @@ class_val = pd.read_csv('ecoli.csv', usecols=[7])
 class_name_list = list(class_val.columns.values)
 # print class_name_list
 '''##################################      Normalizing Data       ########################################'''
+parts = []
 
 
 def normalization():
@@ -27,7 +29,7 @@ def normalization():
                 # if row[i] < 0 or row[i] > 1:
                 # print "inside if loop"
                 # print "row val before normalization ", row[i]
-                normalized_value = (row[i] - min_attribute_val) / (max_attribute_val - min_attribute_val)
+                normalized_value = round((row[i] - min_attribute_val) / (max_attribute_val - min_attribute_val), 2)
                 # print "normalized value is ",normalized_value
                 row[i] = normalized_value
                 # print "row val after normalization ", row[i]
@@ -78,8 +80,7 @@ def partition():
     print merged_data
     part_list = merged_data.part.unique()
     # match_results.stadium.unique()
-    print sorted(part_list)
-    parts = []
+    part_list = sorted(part_list)
     for item in part_list:
         temp_df = merged_data[merged_data['part'] == int(item)]
         parts.append(temp_df)
@@ -94,6 +95,11 @@ def return_partition():
     print temp_df
 
 
+def train():
+    print "train"
+
+
 normalization()
 partition()
 return_partition()
+train()
