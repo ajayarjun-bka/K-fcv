@@ -84,8 +84,6 @@ def partition():
                 print j
         print "TEST DATA \n"+"#"*100
         print test_data
-        x = raw_input("wait")
-
 
 def return_partition():
     merged_data = pd.concat([attributes, class_val], axis=1)
